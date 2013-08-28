@@ -433,17 +433,7 @@ EGLSurface eglCreateWindowSurface(  EGLDisplay dpy, EGLConfig config,
                     attr += 2) {
                 if (*attr == EGL_GL_COLORSPACE_KHR &&
                         dp->haveExtension("EGL_KHR_gl_colorspace")) {
-                    if (ENABLE_EGL_KHR_GL_COLORSPACE) {
-                        format = modifyFormatColorspace(format, *(attr+1));
-                    } else {
-                        // Normally we'd pass through unhandled attributes to
-                        // the driver. But in case the driver implements this
-                        // extension but we're disabling it, we want to prevent
-                        // it getting through -- support will be broken without
-                        // our help.
-                        ALOGE("sRGB window surfaces not supported");
-                        return setError(EGL_BAD_ATTRIBUTE, EGL_NO_SURFACE);
-                    }
+                    format = modifyFormatColorspace(format, *(attr+1));
                 }
             }
         }
