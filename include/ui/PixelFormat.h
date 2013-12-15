@@ -69,6 +69,7 @@ typedef int32_t PixelFormat;
 
 ssize_t bytesPerPixel(PixelFormat format);
 ssize_t bitsPerPixel(PixelFormat format);
+unsigned int minColorDepth(PixelFormat format);
 
 }; // namespace android
 
